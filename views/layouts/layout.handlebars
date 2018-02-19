@@ -4,7 +4,6 @@
 	<title>MongoDB ProofPoint 9000</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<link rel="stylesheet" href="css/style.css">
-
 <!-- Optional theme -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
@@ -12,8 +11,8 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </head>
 <body>
-  
-{{> navigation}}  
+    {{> navigation}}
+
 <div id="wrap">
 	<div class="container">
       <div class="header clearfix">
@@ -28,21 +27,10 @@
             {{/if}}
           </ul>
         </nav>
-<<<<<<< HEAD
-        <h3 class="text-muted">MongoDB Proof Points</h3>
-=======
         <h3 class="text-muted">ProofPoint 9000™</h3>
->>>>>>> ad728c48755178810d400879709ff31db1fcb2bd
       </div>
       <div class="row">
-          {{#if user}}
-          <div class="col-lg-4">
-          {{> sidebar}}
-          </div>
-          <div class="col-lg-8">
-          {{else}}
           <div class="col-lg-12">
-          {{/if}}
             {{#if success_msg}}
               <div class="alert alert-success">{{success_msg}}</div>
             {{/if}}

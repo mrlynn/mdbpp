@@ -6,8 +6,10 @@ var LocalStrategy = require('passport-local').Strategy;
 var ProofPoint = require('../models/proofpoint');
 
 // Create
-router.get('/create', function(req, res){
-	res.render('create');
+router.get('/', function(req, res){
+	res.render('create',{
+        user: req.user
+    });
 });
 
 //test

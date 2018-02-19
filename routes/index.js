@@ -3,11 +3,9 @@ var router = express.Router();
 
 // Get Homepage
 router.get('/', ensureAuthenticated, function(req, res){
-	res.render('index');
-});
-
-router.get('/create', ensureAuthenticated, function(req, res){
-	res.render('create');
+	res.render('index',{
+		user: req.user
+	});
 });
 
 function ensureAuthenticated(req, res, next){
