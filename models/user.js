@@ -1,80 +1,46 @@
-var mongoose = require("mongoose");
-var Schema = mongoose.Schema;
-var bcrypt = require('bcrypt-nodejs');
-var random = require('mongoose-simple-random');
+var mongoose = require('mongoose');
+var bcrypt = require('bcryptjs');
 
-var userSchema = new Schema({
-	resetPasswordToken: String,
-  	resetPasswordExpires: Date,
-	location: {
-      type: { type: String },
-	  coordinates: [ Number ]
-	},
-	email: {
+// User Schema
+var UserSchema = mongoose.Schema({
+	username: {
 		type: String,
-		required: false
+		index:true
 	},
 	password: {
-		type: String,
-		required: false
+		type: String
 	},
-	first_name: {
-		type: String,
-		required: false
+	email: {
+		type: String
 	},
-	last_name: {
-		type: String,
-		required: false
-	},
-	facebook: {
-		type: String,
-		required: false
-	},
-	meetup: {
-		type: String,
-		required: false
-	},
-	profile: {
-		name: String,
-		gender: String,
-		location: String,
-		website: String,
-		picture: String
-	},
-	tokens: Array
-});
-userSchema.pre('save', function(next) {
-  var user = this;
-  var SALT_FACTOR = 5;
-
-  if (!user.isModified('password')) return next();
-
-  bcrypt.genSalt(SALT_FACTOR, function(err, salt) {
-    if (err) return next(err);
-
-    bcrypt.hash(user.password, salt, null, function(err, hash) {
-      if (err) return next(err);
-      user.password = hash;
-      next();
-    });
-  });
+	name: {
+		type: String
+	}
 });
 
-userSchema.plugin(random);
+var User = module.exports = mongoose.model('User', UserSchema);
 
-userSchema.methods.comparePassword = function(candidatePassword, cb) {
-  bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
-    if (err) return cb(err);
-    cb(null, isMatch);
-  });
-};
-
-userSchema.methods.encryptPassword = function(password) {
-	return bcrypt.hashSync(password, bcrypt.genSaltSync(5), null)
-};
-
-userSchema.methods.validPassword = function(password) {
-	return bcrypt.compareSync(password, this.password);
+module.exports.createUser = function(newUser, callback){
+	bcrypt.genSalt(10, function(err, salt) {
+	    bcrypt.hash(newUser.password, salt, function(err, hash) {
+	        newUser.password = hash;
+	        newUser.save(callback);
+	    });
+	});
 }
 
-module.exports = mongoose.model('User', userSchema);
+module.exports.getUserByUsername = function(username, callback){
+	var query = {username: username};
+	User.findOne(query, callback);
+}
+
+module.exports.getUserById = function(id, callback){
+	User.findById(id, callback);
+}
+
+module.exports.comparePassword = function(candidatePassword, hash, callback){
+	bcrypt.compare(candidatePassword, hash, function(err, isMatch) {
+    	if(err) throw err;
+    	callback(null, isMatch);
+	});
+}
