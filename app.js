@@ -13,7 +13,7 @@ var mongoose = require('mongoose');
 
 const dotenv = require('dotenv');
 dotenv.load({ path: '.env' });
-
+console.log("DBNAME: " + process.env.dbname);
 mongoose.connect('mongodb://localhost/' + process.env.dbname);
 var db = mongoose.connection;
 
