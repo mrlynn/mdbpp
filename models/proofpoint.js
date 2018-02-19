@@ -32,6 +32,9 @@ var ProofPointSchema = mongoose.Schema({
     },
     createdDate: {
         type: Date
+    },
+    user: {
+      type: mongoose.Schema.Types.Mixed
     }
 });
  

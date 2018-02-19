@@ -82,19 +82,18 @@ router.post('/submitpp', ensureAuthenticated, function(req, res){
         quote:quote,
         speakerNotes,speakerNotes,
         internalOnly:internalOnly,
-        createdDate: createdDate
-
-		});
-
+        createdDate: createdDate,
+        user: {
+            "name": user.name,
+            "email": user.email,
+            "username": user.username
+        }
+	});
         ProofPoint.createPP(newPP, function(err, newPP){
             	if(err) throw err;
             	console.log(newPP);
             });
-
-       
-
 		req.flash('success_msg', 'ProofPoint created. Nice.');
-
 		res.redirect('/create');
 	}
 });
