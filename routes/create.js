@@ -13,7 +13,7 @@ router.get('/', function(req, res){
 });
 
 //test
-router.post('/submitpp', function(req, res){
+router.post('/submitpp', ensureAuthenticated, function(req, res){
 	
 	var titleText = req.body.titleText;
     var industrySelector = req.body.industrySelector;
@@ -30,13 +30,14 @@ router.post('/submitpp', function(req, res){
     var whyMongo = [whyMongo1, whyMongo2, whyMongo3];
     var pbos = [PBO1, PBO2, PBO3];
     var createdDate = new Date();
+    var user = req.user;
+    console.log("User: " + JSON.stringify(user));
     
     if (req.body.internalOnlyButton === "true")
         var internalOnly = true;
     else 
         var internalOnly = false;
     
-
     console.log(titleText);
     console.log(industrySelector);
     console.log(useCaseSelector);
