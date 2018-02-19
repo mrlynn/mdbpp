@@ -27,6 +27,7 @@ router.post('/submitpp', function(req, res){
     var speakerNotes = req.body.speakerNotes;
     var whyMongo = [whyMongo1, whyMongo2, whyMongo3];
     var pbos = [PBO1, PBO2, PBO3];
+    var createdDate = new Date();
     
     if (req.body.internalOnlyButton === "true")
         var internalOnly = true;
@@ -46,7 +47,8 @@ router.post('/submitpp', function(req, res){
     console.log(PBO3);
     console.log(quote);
     console.log(speakerNotes);
-    console.log(internalOnly);    
+    console.log(internalOnly); 
+    console.log(createdDate);   
 
     // Validation
 	req.checkBody('titleText', 'Title is required').notEmpty();
@@ -76,7 +78,8 @@ router.post('/submitpp', function(req, res){
         pbos:pbos,
         quote:quote,
         speakerNotes,speakerNotes,
-        internalOnly:internalOnly
+        internalOnly:internalOnly,
+        createdDate: createdDate
 
 		});
 
