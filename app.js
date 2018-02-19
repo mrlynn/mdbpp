@@ -10,6 +10,7 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var mongo = require('mongodb');
 var mongoose = require('mongoose');
+var helpers = require('./lib/helpers');
 
 const dotenv = require('dotenv');
 dotenv.load({ path: '.env' });
@@ -25,9 +26,12 @@ var app = express();
 
 // View Engine
 app.set('views', path.join(__dirname, 'views'));
-app.engine('handlebars', exphbs({defaultLayout:'layout'}));
+app.engine('handlebars', exphbs({defaultLayout:'layout', helpers: helpers}));
 app.set('view engine', 'handlebars');
-
+app.use(require('connect-assets')({
+  src: 'public',
+  helperContext: app.locals
+}));
 // BodyParser Middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));

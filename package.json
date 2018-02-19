@@ -12,6 +12,8 @@
   "dependencies": {
     "bcryptjs": "*",
     "body-parser": "*",
+    "connect-assets": "^5.4.0",
+    "connect-assets-hbs-helpers": "0.0.7",
     "connect-flash": "*",
     "cookie-parser": "^1.4.1",
     "dotenv": "^5.0.0",
