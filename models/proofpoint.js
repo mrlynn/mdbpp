@@ -29,7 +29,10 @@ var ProofPointSchema = mongoose.Schema({
     },
     internalOnly: {
 		type: Boolean
-	}
+    },
+    createdDate: {
+        type: Date
+    }
 });
  
 
