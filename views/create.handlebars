@@ -1,0 +1,93 @@
+<h1 class="page-header">Dashboard</h1>
+<div class=“row”>
+   <div class=“col-sm-2">
+        {{#if errors}}
+            {{#each errors}}
+             <div class="alert alert-danger">{{msg}}</div>
+             {{/each}}
+        {{/if}}
+       <form class="ppform" method="post" action="/create/submitpp">
+  <fieldset>
+    <p>
+      <label for="title">Title:</label>
+      <input class = "form-control input-sm" type="text" id="title" placeholder="Proof Point Title" name="titleText"/><br>
+    </p>
+
+    <p>
+      <label for="industry">Industry:</label>
+      <select id="industrySelect" name="industrySelector">
+          <option value="">Select...</option>
+          <option value="Automotive">Automotive</option>
+          <option value="Technology">Technology</option>
+          <option value="Aerospace">Aerospace</option>
+          <option value="Government">Government</option>
+          <option value="Retail">Retail</option>
+          <option value="Financal">Financal</option>
+          <option value="Manufacturing">Manufacturing</option>
+          <option value="Shipping">Shipping</option>
+          <option value="Healthcare">Healthcare</option>
+      </select>
+
+      <label for="usecasetype">Use Case Type:</label>
+      <select id="useCaseSelect" name="useCaseSelector">
+           <option value="">Select...</option>
+          <option value="SingleView">SingleView</option>
+          <option value="Mobile">Mobile</option>
+          <option value="IoT">IoT</option>
+          <option value="Content">Content Management</option>
+          <option value="Personalization">Personalization</option>
+          <option value="Catalog">Catalog</option>
+          <option value="Real-Time Analytics">Real-Time Analytics</option>
+      </select>
+      <label for="secondaryusecasetype">Secondary Use Case Type:</label>
+      <select id="secondaryUseCaseSelect" name="secondaryUseCaseSelector">
+           <option value="">Select...</option>
+          <option value="SingleView">SingleView</option>
+          <option value="Mobile">Mobile</option>
+          <option value="IoT">IoT</option>
+          <option value="Content">Content Management</option>
+          <option value="Personalization">Personalization</option>
+          <option value="Catalog">Catalog</option>
+          <option value="Real-Time Analytics">Real-Time Analytics</option>
+      </select>
+    </p>
+
+    <p>
+      <br><label for="whyMongo">Why Mongo:</label>
+      <input class = "form-control input-sm" type="text" id="whyMongo1" placeholder="Why Mongo Reason #1" name="whyMongo1"/><br>
+      <input class = "form-control input-sm" type="text" id="whyMongo2" placeholder="Why Mongo Reason #2" name="whyMongo2"/><br>
+      <input class = "form-control input-sm" type="text" id="whyMongo3" placeholder="Why Mongo Reason #3" name="whyMongo3"/><br>
+    </p>
+
+    <p>
+      <label for="resultsPBOs">Results/PBOs:</label>
+      <input class = "form-control input-sm" type="text" id="pbo1" placeholder="PBO #1" name="PBO1"/><br>
+      <input class = "form-control input-sm" type="text" id="pbo2" placeholder="PBO #2" name="PBO2"/><br>
+      <input class = "form-control input-sm" type="text" id="pbo3" placeholder="PBO #3" name="PBO3"/><br>
+    </p>
+
+    <p>
+      <label for="quote">Customer Quote:</label>
+      <input class = "form-control input-sm" type="text" id="quote" placeholder="Quote from EB or Champion" name="quote" /><br>
+    </p>
+
+    <p>
+        <label for="speakerNotes">Speaker Notes:</label>
+        <textarea class="form-control" rows="10" id="speakerNotesTextArea" name="speakerNotes"></textarea>
+    </p>
+
+    <p>
+      <label>
+        <input type="checkbox" value="true" checked name="internalOnlyButton"/>
+        Internal Only
+      </label>
+    </p>
+
+    <p>
+     <button type="submit" class="btn btn-success" >Submit</button>
+    </p>
+  </fieldset>
+</form>
+   </div>
+</div>
+

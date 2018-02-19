@@ -1,2 +1,23 @@
+<<<<<<< HEAD
  <h2 class="page-header">Dashboard</h2>
 <p>Welcome to your dashboard</p>  
+=======
+<h2 class="page-header">Dashboard</h2>
+<div class=“row”>
+   <div class=“col-sm-2">
+       <nav class=“nav-sidebar”>
+           <ul class=“nav”>
+              
+               <button>Search Proof Points</button> <br><br>
+               <button>Create Proof Points</button> <br><br>
+               
+               {{#if user}}
+               <button><a href="/users/logout"><i class=“glyphicon glyphicon-off”></i> Sign Out</a></button><br><br>
+               {{else }}
+               <button><a href="/users/login"><i class=“glyphicon glyphicon-on”></i> Sign In</a></button>>br><br>
+               {{/if}}
+           </ul>
+       </nav>
+   </div>
+</div>
+>>>>>>> ad728c48755178810d400879709ff31db1fcb2bd
