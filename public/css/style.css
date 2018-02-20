@@ -1,7 +1,8 @@
 /* Space out content a bit */
 body {
-  padding-top: 20px;
   padding-bottom: 20px;
+  padding-top: 120px;
+
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
@@ -80,10 +81,6 @@ body {
 
 .page-header{
   margin-top:0;
-}
-
-header {
-  margin-top:50px;
 }
 
 footer{
