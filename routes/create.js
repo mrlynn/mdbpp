@@ -2,6 +2,8 @@ var express = require('express');
 var router = express.Router();
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
+const fileUpload = require('express-fileupload');
+var fs = require('fs');
 
 var ProofPoint = require('../models/proofpoint');
 
@@ -31,6 +33,7 @@ router.post('/submitpp', ensureAuthenticated, function(req, res){
     var pbos = [PBO1, PBO2, PBO3];
     var createdDate = new Date();
     var user = req.user;
+    
     console.log("User: " + JSON.stringify(user));
     
     if (req.body.internalOnlyButton === "true")
@@ -73,22 +76,22 @@ router.post('/submitpp', ensureAuthenticated, function(req, res){
 		});
 	} else {
 		var newPP = new ProofPoint({
-		title: titleText,
-		industry:industrySelector,
-		useCaseType: useCaseSelector,
-        secondaryUseCaseType: secondaryUseCaseSelector,
-        whyMongo:whyMongo,
-        pbos:pbos,
-        quote:quote,
-        speakerNotes,speakerNotes,
-        internalOnly:internalOnly,
-        createdDate: createdDate,
-        user: {
-            "name": user.name,
-            "email": user.email,
-            "username": user.username
-        }
-	});
+            title: titleText,
+            industry:industrySelector,
+            useCaseType: useCaseSelector,
+            secondaryUseCaseType: secondaryUseCaseSelector,
+            whyMongo:whyMongo,
+            pbos:pbos,
+            quote:quote,
+            speakerNotes,speakerNotes,
+            internalOnly:internalOnly,
+            createdDate: createdDate,
+            user: {
+                "name": user.name,
+                "email": user.email,
+                "username": user.username
+            }
+	    });
         ProofPoint.createPP(newPP, function(err, newPP){
             	if(err) throw err;
             	console.log(newPP);

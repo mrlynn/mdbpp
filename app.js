@@ -1,8 +1,8 @@
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
+var fs = require('fs');
 var cookieSession = require('cookie-session');
-
 var bodyParser = require('body-parser');
 var exphbs = require('express-handlebars');
 var expressValidator = require('express-validator');
@@ -13,6 +13,21 @@ var LocalStrategy = require('passport-local').Strategy;
 var mongo = require('mongodb');
 var mongoose = require('mongoose');
 var helpers = require('./lib/helpers');
+var multer = require('multer');
+var uploads = multer({
+  dest: 'uploads/',
+  rename: function (fieldname, filename) {
+      console.log("Rename...");
+      return filename + Date.now();
+  },
+  onFileUploadStart: function () {
+      console.log("Upload is starting...");
+  },
+  onFileUploadComplete: function () {
+      console.log("File uploaded");
+  }
+});
+const fileUpload = require('express-fileupload');
 
 const dotenv = require('dotenv');
 dotenv.load({ path: '.env' });
@@ -35,6 +50,8 @@ app.use(require('connect-assets')({
   src: 'public',
   helperContext: app.locals
 }));
+
+
 // BodyParser Middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -53,6 +70,7 @@ app.use(session({
 // Passport init
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(fileUpload());
 
 // Express Validator
 app.use(expressValidator({

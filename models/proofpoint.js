@@ -35,6 +35,9 @@ var ProofPointSchema = mongoose.Schema({
     },
     user: {
       type: mongoose.Schema.Types.Mixed
+    },
+    logo: {
+        data: Buffer, contentType: String 
     }
 });
  

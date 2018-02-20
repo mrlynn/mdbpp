@@ -6,7 +6,7 @@
              <div class="alert alert-danger">{{msg}}</div>
              {{/each}}
         {{/if}}
-       <form class="ppform" method="post" action="/create/submitpp">
+       <form class="ppform" method="post" action="/create/submitpp" encType="multipart/form-data">
   <fieldset>
     <p>
       <label for="title">Title:</label>
@@ -14,6 +14,10 @@
     </p>
 
     <p>
+      <div class="form-group">
+          <label for="logo">Company Logo:</label>
+          <input type="file" name="logoImage" />
+      </div>
   <div class="form-group">
       <label for="industry">Industry:</label><br>
       <select class="form-control" id="industrySelect" name="industrySelector">
