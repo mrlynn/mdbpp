@@ -14,7 +14,7 @@ router.get('/', function(req, res){
     });
 });
 
-//test
+// Submit
 router.post('/submitpp', ensureAuthenticated, function(req, res){
 	
 	var titleText = req.body.titleText;
@@ -33,6 +33,7 @@ router.post('/submitpp', ensureAuthenticated, function(req, res){
     var pbos = [PBO1, PBO2, PBO3];
     var createdDate = new Date();
     var user = req.user;
+    var companyName = req.body.companyName;
     
     console.log("User: " + JSON.stringify(user));
     
@@ -55,6 +56,7 @@ router.post('/submitpp', ensureAuthenticated, function(req, res){
     console.log(speakerNotes);
     console.log(internalOnly); 
     console.log(createdDate);   
+    console.log(companyName); 
 
     // Validation
 	req.checkBody('titleText', 'Title is required').notEmpty();
@@ -67,6 +69,7 @@ router.post('/submitpp', ensureAuthenticated, function(req, res){
     req.checkBody('PBO2', 'Please enter your second PBO from choosing MongoDB').notEmpty();
     req.checkBody('PBO3', 'Please enter your third PBO from choosing MongoDB').notEmpty();
     req.checkBody('speakerNotes', 'Please enter comprehensive speaker notes').notEmpty();
+    req.checkBody('companyName', 'Please enter the Companies Full Name').notEmpty();
    
 	var errors = req.validationErrors();
 
@@ -82,6 +85,7 @@ router.post('/submitpp', ensureAuthenticated, function(req, res){
             secondaryUseCaseType: secondaryUseCaseSelector,
             whyMongo:whyMongo,
             pbos:pbos,
+            companyName:companyName,
             quote:quote,
             speakerNotes,speakerNotes,
             internalOnly:internalOnly,
