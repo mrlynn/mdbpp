@@ -32,7 +32,15 @@ const fileUpload = require('express-fileupload');
 const dotenv = require('dotenv');
 dotenv.load({ path: '.env' });
 console.log("DBNAME: " + process.env.dbname);
-mongoose.connect('mongodb://localhost/' + process.env.dbname);
+
+
+var uri = 'mongodb://mdbppApp:2Secure2Handle@cluster0-shard-00-00-ri4jv.mongodb.net:27017,cluster0-shard-00-01-ri4jv.mongodb.net:27017,cluster0-shard-00-02-ri4jv.mongodb.net:27017/mdbpp?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin';
+
+  mongoose.connect(process.env.MONGODB_ATLAS_URI); 
+
+//mongoose.connect('mongodb://localhost/' + process.env.dbname);  //wroks
+
+
 var db = mongoose.connection;
 
 var routes = require('./routes/index');
