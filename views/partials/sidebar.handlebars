@@ -1,19 +1,34 @@
     <div class="sidebar-sticky">
         <ul class="nav flex-column">
-            <li class="nav-item">
-                <a class="nav-link active" href="/">
-                    <i data-feather="home"></i> Home
-                </a>
+            
+            {{#unless user}}
+            <li class="{{#if_eq title "Login"}}active{{/if_eq}}">
+                <a href="/users/login">Login</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link active" href="/search">
-                    <i data-feather="search"></i> Search
-                </a>
+            <li class="{{#if_eq title "Create Account"}}active{{/if_eq}}">
+                <a href="/users/register">Create Account</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link active" href="/create">
-                    <i data-feather="plus-square"></i> Create
-                </a>
-            </li>
+            {{else }}
+                <li class="nav-item">
+                    <a class="nav-link active" href="/">
+                        <i data-feather="home"></i> Home
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="/search">
+                        <i data-feather="search"></i> Search
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="/create">
+                        <i data-feather="plus-square"></i> Create
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="/users/logout">  
+                        <i data-feather="power"></i> Logout
+                    </a>                
+                </li>
+            {{/unless}}
         </ul>
     </div>
