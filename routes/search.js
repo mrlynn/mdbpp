@@ -32,10 +32,33 @@ router.post('/findPPs', ensureAuthenticated, function(req, res){
     else 
         var internalOnly = false;
     
-  
+    var query = {};
 
     // Validation
-	//req.checkBody('titleText', 'Title is required').notEmpty();
+    //req.checkBody('titleText', 'Title is required').notEmpty();
+    // gotta run a query builder here or something. 
+    if(titleText !== "") {
+       // console.log("adding title text to query");
+        query.title = titleText;
+
+    }
+    if(industrySelector !== "") {
+       // console.log("adding industrySelector to query");
+        query.industry = industrySelector;
+    }
+    if(useCaseSelector !== "") {
+       // console.log("adding useCaseSelector to query");
+        
+       // var query = { $or : [ {useCaseType : usecase}, {secondaryUseCaseType : usecase} ]};
+
+    }
+    if(companyName !== "") {
+       // console.log("adding companyName to query");
+        query.companyName = companyName;
+    }
+
+    console.log("QUEEERRRRRRRYYYYY" , query)
+
 
 	var errors = req.validationErrors();
 
@@ -45,6 +68,28 @@ router.post('/findPPs', ensureAuthenticated, function(req, res){
 		});
 	} else {
 
+        
+        ProofPoint.getPPs(query, function(err, proofpoints) {
+            if(err) throw err;
+
+            if(proofpoints.length === 0){
+                console.log("Sorry, no proofs match for the query " + JSON.stringify(query));
+                var error = {msg : "Sorry, no matches for your search - Try Again!"};
+                res.render('search',{
+                    empty: error
+                });
+            }
+            else{
+                console.log("Found " + proofpoints.length + " Proofs for ", JSON.stringify(query));
+                //console.log(proofpoints);
+                res.render('search',{
+                    pps: proofpoints
+                });
+            }
+
+        }) 
+    
+        /*
         ProofPoint.getPPByCompanyName(companyName, function(err, proofpoints){
             if(err) throw err;
             
@@ -59,15 +104,13 @@ router.post('/findPPs', ensureAuthenticated, function(req, res){
             }
             else{
                 console.log("Found " + proofpoints.length + " Proofs for ", companyName);
-                console.log(proofpoints);
+                //console.log(proofpoints);
                 res.render('search',{
                     pps: proofpoints
                 });
-                
             }
-            
-                
         });
+        */
 	}
 });
 
