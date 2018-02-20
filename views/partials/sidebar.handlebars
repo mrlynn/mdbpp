@@ -1,17 +1,19 @@
-<div class="row">
-    <div class="col-sm-2">
-        <nav class="nav-sidebar">
-            <ul class="nav">
-                <li class="active"><a href="javascript:;">Home</a></li>
-                <li><a href="/about">About</a></li>
-                <li><a href="/">Proof Points</a></li>
-                <li><a href="/help">FAQ</a></li>
-                <li class="nav-divider"></li>
-                {{#if user}}
-                <li><a href="/users/logout"><i class="glyphicon glyphicon-off"></i> Sign Out</a></li>
-                {{else }}
-                <li><a href="/users/login"><i class="glyphicon glyphicon-on"></i> Sign In</a></li>
-                {{/if}}
-            </ul>
-        </nav>
+    <div class="sidebar-sticky">
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link active" href="/">
+                    <i data-feather="home"></i> Home
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="/search">
+                    <i data-feather="search"></i> Search
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="/create">
+                    <i data-feather="plus-square"></i> Create
+                </a>
+            </li>
+        </ul>
     </div>

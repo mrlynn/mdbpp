@@ -1,0 +1,121 @@
+<h1 class="page-header">Dashboard</h1>
+<div class=“row”>
+   <div class=“col-sm-2">
+        {{#if errors}}
+            {{#each errors}}
+             <div class="alert alert-danger">{{msg}}</div>
+             {{/each}}
+        {{/if}}
+        {{#if empty}}
+             <div class="alert alert-danger">"Sorry, there are no Proof Points matching your search -- try Again!"</div>
+        {{/if}}
+       <form class="ppform" method="post" action="/search/findPPs" encType="multipart/form-data">
+  <fieldset>
+    <p>
+      <label for="title">Title:</label>
+      <input class = "form-control input-sm" type="text" id="title" placeholder="Proof Point Title" name="titleText"/>
+    </p>
+
+    <p>
+      <label for="company">Company Name:</label>
+      <input class = "form-control input-sm" type="text" id="companyName" placeholder="Companies Full Name" name="companyName"/>
+    </p>
+
+    <p>
+    
+    <div class="form-group">
+      <label for="industry">Industry:</label><br>
+      <select class="form-control" id="industrySelect" name="industrySelector">
+          <option value="">Select...</option>
+          <option value="Automotive">Automotive</option>
+          <option value="Telco">Telecom</option>
+          <option value="Technology">Technology</option>
+          <option value="Aerospace">Aerospace</option>
+          <option value="Government">Government</option>
+          <option value="Retail">Retail</option>
+          <option value="Financal">Financal</option>
+          <option value="Manufacturing">Manufacturing</option>
+          <option value="Shipping">Shipping</option>
+          <option value="Healthcare">Healthcare</option>
+      </select>
+      <br>
+      <label for="usecasetype">Use Case Type:</label><br>
+      <select class="form-control" id="useCaseSelect" name="useCaseSelector">
+           <option value="">Select...</option>
+          <option value="SingleView">SingleView</option>
+          <option value="Mobile">Mobile</option>
+          <option value="IoT">IoT</option>
+          <option value="Content">Content Management</option>
+          <option value="Personalization">Personalization</option>
+          <option value="Catalog">Catalog</option>
+          <option value="Real-Time Analytics">Real-Time Analytics</option>
+      </select>
+
+    </p>
+    </div>
+    <p>
+     <button type="submit" class="btn btn-success" >Search</button>
+    </p>
+
+    {{#if pps}}
+    <div class="row"></div>
+        {{#each pps}}   
+        <div class="col-sm-15">
+            <div class="card">
+                <div class="card-body">
+                <h4 class="card-title">{{title}}</h4>
+                <h6 class="card-subs">Company: {{companyName}}</h6>
+                <h6 class="card-subs2">Industry: {{industry}}</h6>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Why Mongo</h5>
+                                <li>{{whyMongo.[0]}}</li>
+                                <li>{{whyMongo.[1]}}</li>
+                                <li>{{whyMongo.[2]}}</li>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">PBOs</h5>
+                                <li>{{pbos.[0]}}</li>
+                                <li>{{pbos.[1]}}</li>
+                                <li>{{pbos.[2]}}</li>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h6 class="card-subs3">Quote: {{quote}}</h6>
+                    <h6 class="card-subs4">Created By: {{user.email}}</h6>
+
+                <a href="#" class="btn btn-primary">Download PPT</a>
+                <br>
+                <br>
+             </div>
+        </div>
+
+        {{/each}}
+    </div>
+
+
+  
+  
+  
+</div>
+<br>
+<br>
+    {{/if}}
+
+
+
+
+
+  </fieldset>
+</form>
+   </div>
+</div>
+

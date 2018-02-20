@@ -21,6 +21,9 @@ var ProofPointSchema = mongoose.Schema({
     pbos: {
 		type: Array
     },
+    companyName: {
+        type: String
+    },
     quote: {
 		type: String
     },
@@ -39,6 +42,7 @@ var ProofPointSchema = mongoose.Schema({
     logo: {
         data: Buffer, contentType: String 
     }
+    
 });
  
 
@@ -48,3 +52,10 @@ module.exports.createPP = function(newPP, callback){
     console.log("creatingPP");
     newPP.save(callback);
 }
+
+module.exports.getPPByCompanyName = function(companyName, callback){
+    var query = {companyName: companyName};
+    ProofPoint.find(query,callback);
+	
+}
+
