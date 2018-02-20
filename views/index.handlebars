@@ -1,9 +1,34 @@
 <div class=“row”>
-        <div class="jumbotron jumbotron-fluid">
-            <div class="container">
-                <h1 class="display-4">MongoDB ProofPoint 9000&trade;</h1>
-                <p class="lead">Don't take our word for it.</p>
-            </div>
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4">MongoDB ProofPoint 9000&trade;</h1>
+            <p class="lead">Don't take our word for it.</p>
         </div>
     </div>
 </div>
+</div>
+{{#if pp}}
+<h2>Proof Points</h2>
+<div class="table-responsive">
+    <table class="table table-striped table-sm">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Company</th>
+                <th>Industry</th>
+                <th>Created</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each pp}}
+            <tr>
+                <td>{{this.title}}</td>
+                <td>{{this.companyName}}</td>
+                <td>{{this.industry}}</td>
+                <td>{{this.createdDate}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>
+{{/if}}
