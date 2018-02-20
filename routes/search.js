@@ -49,6 +49,7 @@ router.post('/findPPs', ensureAuthenticated, function(req, res){
     if(useCaseSelector !== "") {
        // console.log("adding useCaseSelector to query");
         
+       query.useCaseType = useCaseSelector;
        // var query = { $or : [ {useCaseType : usecase}, {secondaryUseCaseType : usecase} ]};
 
     }
