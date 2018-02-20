@@ -26,13 +26,14 @@
       <select class="form-control" id="industrySelect" name="industrySelector">
           <option value="">Select...</option>
           <option value="Automotive">Automotive</option>
+          <option value="eCommerce">eCommerce</option>
           <option value="Media">Media</option>
           <option value="Telco">Telecom</option>
           <option value="Technology">Technology</option>
           <option value="Aerospace">Aerospace</option>
           <option value="Government">Government</option>
           <option value="Retail">Retail</option>
-          <option value="Financal">Financal</option>
+          <option value="Financial">Financial</option>
           <option value="Manufacturing">Manufacturing</option>
           <option value="Shipping">Shipping</option>
           <option value="Healthcare">Healthcare</option>
@@ -41,10 +42,10 @@
       <label for="usecasetype">Use Case Type:</label><br>
       <select class="form-control" id="useCaseSelect" name="useCaseSelector">
            <option value="">Select...</option>
-          <option value="SingleView">SingleView</option>
+          <option value="Single View">Single View</option>
           <option value="Mobile">Mobile</option>
           <option value="IoT">IoT</option>
-          <option value="Content">Content Management</option>
+          <option value="Content Management">Content Management</option>
           <option value="Personalization">Personalization</option>
           <option value="Catalog">Catalog</option>
           <option value="Real-Time Analytics">Real-Time Analytics</option>
@@ -65,6 +66,7 @@
                 <h4 class="card-title">{{title}}</h4>
                 <h6 class="card-subs">Company: {{companyName}}</h6>
                 <h6 class="card-subs2">Industry: {{industry}}</h6>
+                <h6 class="card-subs3">Use Case Type: {{useCaseType}}</h6>
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="card">
