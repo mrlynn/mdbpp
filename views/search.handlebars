@@ -1,13 +1,13 @@
-<h1 class="page-header">Dashboard</h1>
-<div class=“row”>
-   <div class=“col-sm-2">
+<h1 class="page-header">Search</h1>
+<div class="row">
+   <div class="col-sm-2">
         {{#if errors}}
             {{#each errors}}
              <div class="alert alert-danger">{{msg}}</div>
              {{/each}}
         {{/if}}
         {{#if empty}}
-             <div class="alert alert-danger">"Sorry, there are no Proof Points matching your search -- try Again!"</div>
+             <div class="alert alert-danger">Sorry, there are no Proof Points matching your search -- try Again!</div>
         {{/if}}
        <form class="ppform" method="post" action="/search/findPPs" encType="multipart/form-data">
   <fieldset>
@@ -100,20 +100,10 @@
 
         {{/each}}
     </div>
-
-
-  
-  
-  
 </div>
 <br>
 <br>
     {{/if}}
-
-
-
-
-
   </fieldset>
 </form>
    </div>
