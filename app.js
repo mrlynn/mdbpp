@@ -13,6 +13,7 @@ var LocalStrategy = require('passport-local').Strategy;
 var mongo = require('mongodb');
 var mongoose = require('mongoose');
 var helpers = require('./lib/helpers');
+
 var multer = require('multer');
 var uploads = multer({
   dest: 'uploads/',

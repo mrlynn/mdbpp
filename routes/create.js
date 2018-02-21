@@ -3,6 +3,7 @@ var router = express.Router();
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 const fileUpload = require('express-fileupload');
+var formidable = require('formidable');
 var fs = require('fs');
 
 var ProofPoint = require('../models/proofpoint');
@@ -16,8 +17,17 @@ router.get('/', function(req, res){
 
 // Submit
 router.post('/submitpp', ensureAuthenticated, function(req, res){
-	
-	var titleText = req.body.titleText;
+    var form = formidable.IncomingForm();
+    form.parse(req, function (err, fields, files) {
+        var oldpath = files.logoImage.path;
+        var newpath = './uploads/' + files.logoImage.name;
+        fs.rename(oldpath, newpath, function (err) {
+          if (err) throw err;
+          res.write('File uploaded and moved!');
+          res.end();
+        });
+    
+   	var titleText = req.body.titleText;
     var industrySelector = req.body.industrySelector;
     var useCaseSelector = req.body.useCaseSelector;
     var secondaryUseCaseSelector = req.body.secondaryUseCaseSelector;
@@ -90,6 +100,7 @@ router.post('/submitpp', ensureAuthenticated, function(req, res){
             speakerNotes,speakerNotes,
             internalOnly:internalOnly,
             createdDate: createdDate,
+            logoImage: newpath,
             user: {
                 "name": user.name,
                 "email": user.email,
@@ -102,7 +113,8 @@ router.post('/submitpp', ensureAuthenticated, function(req, res){
             });
 		req.flash('success_msg', 'ProofPoint created. Nice.');
 		res.redirect('/create');
-	}
+    }
+});
 });
 
 function ensureAuthenticated(req, res, next){

@@ -24,6 +24,7 @@
     "express-messages": "*",
     "express-session": "*",
     "express-validator": "*",
+    "formidable": "^1.1.1",
     "fs": "0.0.1-security",
     "mongodb": "*",
     "mongoose": "*",
@@ -31,6 +32,7 @@
     "nodemon": "^1.15.1",
     "passport": "*",
     "passport-http": "*",
-    "passport-local": "*"
+    "passport-local": "*",
+    "pptxgenjs": "^2.0.0"
   }
 }

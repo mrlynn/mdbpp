@@ -1,42 +1,10 @@
-<div class="navbar navbar-default navbar-fixed-top">
-  <div class="container">
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
     <div class="navbar-header">
-      <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-        <span class="sr-only">Toggle Navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a href="/" class="navbar-brand">MongoDB ProofPoint 9000</a>
+      <a class="navbar-brand" href="#">MongoDB ProofPoint 9000 &trade;</a>
     </div>
-    <div class="collapse navbar-collapse">
-      <ul class="nav navbar-nav navbar-right">
-        {{#unless user}}
-        <li class="{{#if_eq title " Login "}}active{{/if_eq}}">
-          <a href="/users/login">Login</a>
-        </li>
-        <li class="{{#if_eq title " Create Account "}}active{{/if_eq}}">
-          <a href="/users/register">Create Account</a>
-        </li>
-        {{else}}
-        <li class="dropdown{{#if_eq title " Create Account "}} active{{/if_eq}}">
-          <a href="#" data-toggle="dropdown" class="dropdown-toggle">
-            {{#if user.profile.picture}}
-            <img src="{{user.profile.picture}}" class="profile-image" /> {{/if}} {{#if user.profile.name}} {{user.profile.name}} {{else}} {{#if user.email}} {{user.email}} {{else}}
-            {{user.id}} {{/if}} {{/if}}
-          </a>
-          <ul class="dropdown-menu">
-            <li>
-              <a href="/account">My Account</a>
-            </li>
-            <li class="divider"></li>
-            <li>
-              <a href="/logout">Logout</a>
-            </li>
-          </ul>
-        </li>
-        {{/unless}}
-      </ul>
-    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="/">Home</a></li>
+    </ul>
   </div>
-</div>
+</nav>
