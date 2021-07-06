@@ -12,7 +12,7 @@
   "dependencies": {
     "bcryptjs": "*",
     "body-parser": "*",
-    "connect-assets": "^5.4.0",
+    "connect-assets": "^6.0.0",
     "connect-assets-hbs-helpers": "0.0.7",
     "connect-flash": "*",
     "cookie-parser": "^1.4.1",
