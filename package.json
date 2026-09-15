@@ -28,7 +28,7 @@
     "fs": "0.0.1-security",
     "mongodb": "*",
     "mongoose": "*",
-    "multer": "^1.3.0",
+    "multer": "^2.0.0",
     "nodemon": "^1.15.1",
     "passport": "*",
     "passport-http": "*",
